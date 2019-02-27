@@ -1,13 +1,13 @@
 package model;
 /** dados para teste**/
 public class DaoCliente {
-    private String nomeCliente ="Guilherme da Silva";
-    private String telefone ="(62)985761963";
-    private String rua ="rua das piranha";
-    private String setor ="São Francisco";
-    private Integer quadra =189;
-    private Integer lote =105;
-    private String referencia ="proximo ao motel Fuzilada";
+    private String nomeCliente;
+    private String telefone;
+    private String rua;
+    private String setor;
+    private Integer quadra;
+    private Integer lote;
+    private String referencia;
 
 
 
@@ -65,5 +65,18 @@ public class DaoCliente {
 
     public void setReferencia(String referencia) {
         this.referencia = referencia;
+    }
+
+    @Override
+    public String toString() {
+        return "DaoCliente{" +
+                "nomeCliente='" + nomeCliente + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", rua='" + rua + '\'' +
+                ", setor='" + setor + '\'' +
+                ", quadra=" + quadra +
+                ", lote=" + lote +
+                ", referencia='" + referencia + '\'' +
+                '}';
     }
 }

@@ -27,8 +27,10 @@ public class SingleConnection {
                     connection = DriverManager.getConnection(url,user,password);
                     connection.setAutoCommit(false);
                     System.out.println("Conectado com sucesso!");
+                    System.out.println("Transação efetuada com sucesso");
                 }
         }catch (Exception e){
+            System.out.println("ERRO NA TRANSAÇÃO: classe SingleCOnection");
             e.printStackTrace();
         }
     }

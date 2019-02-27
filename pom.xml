@@ -21,6 +21,14 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-dist -->
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-dist</artifactId>
+            <version>10.1.0.Final</version>
+            <scope>provided</scope>
+        </dependency>
+
 
     </dependencies>
 

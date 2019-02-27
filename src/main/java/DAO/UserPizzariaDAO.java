@@ -5,6 +5,9 @@ import model.DaoCliente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserPizzariaDAO {
 
@@ -29,5 +32,23 @@ public class UserPizzariaDAO {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public List<DaoCliente> buscaClientesNoBanco() throws Exception{
+        List<DaoCliente> listaCliente = new ArrayList<DaoCliente>(); /**instancia lista**/
+        String sql ="select * from cliente";    /**monta o  select**/
+        PreparedStatement statement = connection.prepareStatement(sql); /**passa o sql para o preparedStatement**/
+        ResultSet resultado = statement.executeQuery();
+        while(resultado.next()){  /**em quanto houver proximo resultado ele itera**/
+            DaoCliente cliente = new DaoCliente();
+            cliente.setNomeCliente(resultado.getString("nome"));
+            cliente.setTelefone(resultado.getString("telefone"));
+            cliente.setRua(resultado.getString("rua"));
+            cliente.setSetor(resultado.getString("setor"));
+            cliente.setQuadra(resultado.getInt("quadra"));
+            cliente.setLote(resultado.getInt("lote"));
+            cliente.setReferencia(resultado.getString("referencia"));
+            listaCliente.add(cliente);
+        }
+        return listaCliente;
     }
 }
