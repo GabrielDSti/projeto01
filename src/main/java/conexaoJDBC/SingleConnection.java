@@ -26,11 +26,12 @@ public class SingleConnection {
                     Class.forName("org.postgresql.Driver");
                     connection = DriverManager.getConnection(url,user,password);
                     connection.setAutoCommit(false);
-                    System.out.println("Conectado com sucesso!");
-                    System.out.println("Transação efetuada com sucesso");
+                    System.out.println("Conexão estabelecida com sucesso!");
+                    System.out.println("Conectado  em:"+url);
+                    System.out.println("usuario:"+user.toUpperCase());
                 }
         }catch (Exception e){
-            System.out.println("ERRO NA TRANSAÇÃO: classe SingleCOnection");
+            System.out.println("ERRO AO ESTABELECER CONEXÃO COM:"+url);
             e.printStackTrace();
         }
     }

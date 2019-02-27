@@ -16,7 +16,7 @@ public class UserPizzariaDAO {
     public UserPizzariaDAO() {
         connection = SingleConnection.getConnection();
     }
-    public void salvar  (DaoCliente d){
+    public void cadastraClienteNoBanco  (DaoCliente d){
         try {
             String sql = "insert into cliente (nome,telefone,rua,setor,quadra,lote,referencia) values(?,?,?,?,?,?,?)";
             PreparedStatement insert = connection.prepareStatement(sql);
@@ -51,4 +51,24 @@ public class UserPizzariaDAO {
         }
         return listaCliente;
     }
+    public List<DaoCliente> buscaUmClienteNoBanco() throws Exception{
+        String nome ="Gabriel Dias dos Santos";
+        List<DaoCliente> listaCliente = new ArrayList<DaoCliente>(); /**instancia lista**/
+        String sql ="select * from cliente c where c.nome like '"+nome+"'";    /**monta o  select**/
+        PreparedStatement statement = connection.prepareStatement(sql); /**passa o sql para o preparedStatement**/
+        ResultSet resultado = statement.executeQuery();
+        while(resultado.next()){  /**em quanto houver proximo resultado ele itera**/
+            DaoCliente cliente = new DaoCliente();
+            cliente.setNomeCliente(resultado.getString("nome"));
+            cliente.setTelefone(resultado.getString("telefone"));
+            cliente.setRua(resultado.getString("rua"));
+            cliente.setSetor(resultado.getString("setor"));
+            cliente.setQuadra(resultado.getInt("quadra"));
+            cliente.setLote(resultado.getInt("lote"));
+            cliente.setReferencia(resultado.getString("referencia"));
+            listaCliente.add(cliente);
+        }
+        return listaCliente;
+    }
+
 }
