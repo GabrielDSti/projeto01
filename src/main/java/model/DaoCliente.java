@@ -8,8 +8,16 @@ public class DaoCliente {
     private Integer quadra;
     private Integer lote;
     private String referencia;
+    private Long id;
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNomeCliente() {
         return nomeCliente;

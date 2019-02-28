@@ -33,12 +33,37 @@ public class TesteBancoJdbc {
     public void initBuscaUmCliente(){
         UserPizzariaDAO dao = new UserPizzariaDAO();
         try {
-            List<DaoCliente> cliente = dao.buscaUmClienteNoBanco();
-            for (DaoCliente daoCliente :cliente){
-                System.out.println(daoCliente);
-            }
+            DaoCliente cliente = dao.buscaUmClienteNoBanco("Guilherme da Silva");
+            System.out.println(cliente);
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    @Test
+    public void initBuscaUmClientePorId(){
+        UserPizzariaDAO dao = new UserPizzariaDAO();
+        try {
+            DaoCliente cliente = dao.buscaUmClientePorId(2L);
+            System.out.println(cliente);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public  void initUpdateCliente(){
+        try {
+
+            UserPizzariaDAO dao = new UserPizzariaDAO();
+            DaoCliente cliente = dao.buscaUmClientePorId(3L);
+            cliente.setNomeCliente("Guilherme Atualizado!");
+            dao.atualizar(cliente);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void initDeletarCliente() throws Exception {
+        UserPizzariaDAO dao = new UserPizzariaDAO();
+        dao.deletarCliente(5L);
     }
 }
